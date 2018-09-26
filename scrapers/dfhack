@@ -1,6 +1,15 @@
 #!/bin/sh
 
 # placeholder constant values
+# I could see the json being in this format, or being something more structured
+# {
+#	"timestamp": "the time that we fetched this data"
+# 	"versions": [
+#   	{"version": "...", "df_version":"...", 
+#       "distributions": [...]}
+#   ]
+# }
+# just a thought...
 echo '[
 	{
 		"version":"0.44.12-r1",
