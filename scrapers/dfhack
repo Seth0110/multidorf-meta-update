@@ -1,3 +1,18 @@
 #!/bin/sh
 
-echo "{}"
+# placeholder constant values
+echo '[
+	{
+		"version":"0.44.12-r1",
+		"df_version":"0.44.12",
+		"date":"7/13/2018",
+		"windows_x86":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-Windows-32.zip",
+		"windows_x64":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-Windows-64.zip",
+		"mac_x86":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-OSX-32-gcc-7.3.0.tar.bz2",
+		"mac_x64":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-OSX-64-gcc-7.3.0.tar.bz2",
+		"linux_gcc48_x86":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-Linux-32-gcc-4.8.tar.bz2",
+		"linux_gcc48_x64":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-Linux-64-gcc-4.8.tar.bz2",
+		"linux_gcc7_x86":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-Linux-32-gcc-7.tar.bz2",
+		"linux_gcc7_x64":"https://github.com/DFHack/dfhack/releases/download/0.44.12-r1/dfhack-0.44.12-r1-Linux-64-gcc-7.tar.bz2",
+	}
+]'
