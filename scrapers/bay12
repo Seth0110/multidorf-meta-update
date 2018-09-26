@@ -1,3 +1,17 @@
 #!/bin/sh
 
-echo "{}"
+# currently dumping hardcoded json values
+echo '[
+    {
+        "date":"7/7/2018",
+        "version":"0.44.12",
+        "windows_x86_legacy": "http://bay12games.com/dwarves/df_44_12_legacy32.zip",
+        "windows_x64_legacy": "http://bay12games.com/dwarves/df_44_12_legacy.zip",
+        "windows_x86": "http://bay12games.com/dwarves/df_44_12_win32.zip",
+        "windows_x64": "http://bay12games.com/dwarves/df_44_12_win.zip",
+        "linux_x86": "http://bay12games.com/dwarves/df_44_12_linux32.tar.bz2",
+        "linux_x64": "http://bay12games.com/dwarves/df_44_12_linux.tar.bz2",
+        "mac_x86": "http://bay12games.com/dwarves/df_44_12_osx32.tar.bz2",
+        "mac_x64": "http://bay12games.com/dwarves/df_44_12_osx.tar.bz2"
+    }
+]'
