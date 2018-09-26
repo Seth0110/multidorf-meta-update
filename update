@@ -1,0 +1,16 @@
+#!/bin/sh
+
+mkdir "working"
+cd "working"
+
+git clone "https://github.com/multidorf/multidorf-meta" # TODO accept this from command line
+cd multidorf-meta
+../../scrapers/bay12 > bay12.json
+../../scrapers/therapist > therapist.json
+../../scrapers/dfhack > dfhack.json
+
+git commit bay12.json therapist.json dfhack.json -m "Updated meta-information (by script)"
+git push
+
+cd ../../
+rm -rf working/
