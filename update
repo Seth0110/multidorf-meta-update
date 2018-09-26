@@ -1,20 +1,17 @@
 #!/bin/sh
 
-mkdir "working"
-cd "working"
+git clone "git@github.com:multidorf/multidorf-meta.git" working/ # TODO accept this from command line
+cd working
+../scrapers/bay12 > bay12.json
+../scrapers/therapist > therapist.json
+../scrapers/dfhack > dfhack.json
 
-git clone "git@github.com:multidorf/multidorf-meta.git" # TODO accept this from command line
-cd multidorf-meta
-../../scrapers/bay12 > bay12.json
-../../scrapers/therapist > therapist.json
-../../scrapers/dfhack > dfhack.json
-
-if [ -z "$(git diff --stat)" ]; then
+if [ ! -z "$(git diff --stat)" ]; then
 	git config --local user.name "multidorf-meta-update"
 	git config --local user.email "noreply@robot.net"
 	git commit -a -m "Updated meta-information (by script)"
 	git push
 fi
 
-cd ../../
+cd ../
 rm -rf working/
