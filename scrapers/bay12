@@ -1,17 +1,31 @@
 #!/bin/sh
 
-# currently dumping hardcoded json values
-echo '[
-    {
-        "date":"7/7/2018",
-        "version":"0.44.12",
-        "windows_x86_legacy": "http://bay12games.com/dwarves/df_44_12_legacy32.zip",
-        "windows_x64_legacy": "http://bay12games.com/dwarves/df_44_12_legacy.zip",
-        "windows_x86": "http://bay12games.com/dwarves/df_44_12_win32.zip",
-        "windows_x64": "http://bay12games.com/dwarves/df_44_12_win.zip",
-        "linux_x86": "http://bay12games.com/dwarves/df_44_12_linux32.tar.bz2",
-        "linux_x64": "http://bay12games.com/dwarves/df_44_12_linux.tar.bz2",
-        "mac_x86": "http://bay12games.com/dwarves/df_44_12_osx32.tar.bz2",
-        "mac_x64": "http://bay12games.com/dwarves/df_44_12_osx.tar.bz2"
-    }
-]'
+# download the source page
+wget -q http://www.bay12games.com/dwarves/
+
+# find version/date
+version=$(grep -Pom 1 "\d+\.\d+\.\d+" index.html)
+date=$(grep -Pom 1 "\((.+)\)\<\/s" index.html | cut -c 2- | rev | cut -c 5- | rev)
+
+# find package names
+winPkg=$(grep -Po "df_\d+_\d+_win\.zip" index.html)
+linPkg=$(grep -Po "df_\d+_\d+_linux\.tar\.bz2" index.html)
+osxPkg=$(grep -Po "df_\d+_\d+_osx\.tar\.bz2" index.html)
+
+# build URLs
+dlUrl="http://www.bay12games.com/dwarves/"
+winUrl=$dlUrl$winPkg
+linUrl=$dlUrl$linPkg
+osxUrl=$dlUrl$osxPkg
+
+# echo the JSON
+echo "[ {
+  \"date\": \"$date\",
+  \"version\": \"$version\",
+  \"windows_x86\": \"$winUrl\",
+  \"linux_x86\": \"$linUrl\",
+  \"mac_x86\": \"$osxUrl\"
+} ]"
+
+# remove source page
+rm index.html
